@@ -16,7 +16,7 @@ public class LoginAutomated {
 		// TODO Auto-generated method stub
 		System.setProperty("webdriver.chrome.driver", "C:\\Program Files\\Java/chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
-		
+	
 		driver.get("https://www.homes.com/");
 		WebDriverWait wait = new WebDriverWait(driver, 5);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//header[@class='site-header site-header--page-home site-header--homepage-width site-header--theme-dark']//span[@class='icon icon--person icon--profile']")));
