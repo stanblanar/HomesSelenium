@@ -16,7 +16,7 @@ public class LoginAutomated {
 		// TODO Auto-generated method stub
 		System.setProperty("webdriver.chrome.driver", "C:\\Program Files\\Java/chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
-	
+	//Goes to Homes.com website
 		driver.get("https://www.homes.com/");
 		WebDriverWait wait = new WebDriverWait(driver, 5);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//header[@class='site-header site-header--page-home site-header--homepage-width site-header--theme-dark']//span[@class='icon icon--person icon--profile']")));
@@ -24,20 +24,22 @@ public class LoginAutomated {
 			icon.moveToElement(driver.findElement(By.xpath("//header[@class='site-header site-header--page-home site-header--homepage-width site-header--theme-dark']//span[@class='icon icon--person icon--profile']"))).build().perform();
 	
 			
-		driver.findElement(By.xpath("//a[contains(text(), 'Sign In')]")).click();
+		driver.findElement(By.xpath("//a[contains(text(), 'Sign In')]")).click();	
 		driver.findElement(By.xpath("//span[contains(text(),'Sign In with Email')]")).click();
+	//Types an email	
 		driver.findElement(By.id("login-email")).sendKeys("stasblanar@gmail.com");
 		Thread.sleep(3000L);
 		driver.findElement(By.xpath("//input[@id='login-password']")).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("login-password")));
+	//Types a password	
 		driver.findElement(By.id("login-password")).sendKeys("test1234");
 		driver.findElement(By.xpath("//span[contains(text(),'Sign In')]")).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#CTALin")));
 		driver.findElement(By.cssSelector("#CTALin")).click();
+	//Assertion if user is redirected to the right page	
 		String actualURL = driver.getCurrentUrl();
 		Assert.assertEquals(actualURL, "https://www.homes.com/myhomes/");
 		System.out.println("User successfuly logged in");
-		
 		driver.close();
 	
 	}
