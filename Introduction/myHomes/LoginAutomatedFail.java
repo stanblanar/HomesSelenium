@@ -31,6 +31,8 @@ public class LoginAutomatedFail {
 		Thread.sleep(3000L);
 		driver.findElement(By.xpath("//input[@id='login-password']")).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("login-password")));
+		
+		//Typing a wrong password in "Password" field   ->   Test Fails
 		driver.findElement(By.id("login-password")).sendKeys("test1233");
 		driver.findElement(By.xpath("//span[contains(text(),'Sign In')]")).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#CTALin")));
